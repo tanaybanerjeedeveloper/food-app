@@ -1,14 +1,19 @@
 import React from "react";
+import {CDN_URL} from '../utils/constants';
 
-const RestaurantCard = () => (
-    <div className="res-card">
-        <img className="res-logo" alt="res-logo" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/vkhcohhmqfczycw9vsar" />
-        <h3>KFC</h3>
-        <h4>Biryani</h4>
-        <h4>4.4 stars</h4>
-        <h4>38 mins</h4>
-    </div>
-
-);
+const RestaurantCard = (props) =>{
+    const {data} = props;
+    const {name, cuisines, avgRating, sla } = data;
+    return (
+        <div className="res-card">
+            <img className="res-logo" alt="res-logo" src={`${CDN_URL}${data.cloudinaryImageId}`} />
+            <h3>{name}</h3>
+            <h4>{cuisines.join(', ')}</h4>
+            <h4>{`${avgRating} stars`}</h4>
+            <h4>{`${sla.deliveryTime} mins`}</h4>
+        </div>
+    
+    );
+} 
 
 export default RestaurantCard;

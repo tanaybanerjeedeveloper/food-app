@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDom from "react-dom";
+import {LOGO_URL} from "../utils/constants";
 
 const Header = () => (
     <div className="header">
         <div className="logo-container">
-            <img className="logo" src="https://img.freepik.com/premium-vector/logo-food-company-that-says-sun-sun-sunflower_917213-253424.jpg?semt=ais_hybrid" />
+            <img className="logo" src={LOGO_URL}/>
         </div>
         <div className="nav-items">
             <ul>
