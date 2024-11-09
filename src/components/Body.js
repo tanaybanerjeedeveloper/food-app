@@ -1,10 +1,11 @@
-import React from "react";
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
+import Shimmer from "./Shimmer";
 
 
 const Body = () => {
     const [restaurantList, setRestaurantList] = useState([]);
+    const [searchText, setSearchText] = useState("");
 
     useEffect(() => {
         fetchData();
@@ -15,12 +16,23 @@ const Body = () => {
         const json = await data.json();
         console.log(json);
 
-        setRestaurantList(json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants);
+        setRestaurantList(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    }
+
+    if(restaurantList.length === 0) {
+        return <Shimmer/>
     }
 
     return (
         <div className="body">
-            <div className="search">search</div>
+            <div className="search">
+              <input type="text" className="search-box" value={searchText} onChange={(e) => setSearchText(e.target.value)}/>
+              <button onClick={() => {
+               const filteredList = restaurantList.filter((item) => item.info.name.toLowerCase().includes(searchText.toLowerCase()));
+               setRestaurantList(filteredList);
+
+              }}>Search</button>
+            </div>
             <div className="res-container">
                 {restaurantList.map((item, index) => <RestaurantCard key={item.info.id} data={item.info}/>)}
                 
