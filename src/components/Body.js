@@ -16,7 +16,7 @@ const Body = () => {
         const json = await data.json();
         console.log(json);
 
-        setRestaurantList(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setRestaurantList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
 
     if(restaurantList.length === 0) {
