@@ -35,8 +35,8 @@ const Body = () => {
               }}>Search</button>
             </div>
             <div className="res-container">
-                {restaurantList.map((item, index) => <Link to={`/restaurants/${item.info.id}`}>
-                <RestaurantCard key={item.info.id} data={item.info}/>
+                {restaurantList.map((item, index) => <Link key={item.info.id} to={`/restaurants/${item.info.id}`}>
+                <RestaurantCard  data={item.info}/>
                 </Link>)}
                 
             </div>
