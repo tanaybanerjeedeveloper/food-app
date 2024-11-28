@@ -1,6 +1,9 @@
 import ItemList from "./ItemList";
 
 const RestaurantCategory = (props) => {
+  const count = 0;
+  console.log(count);
+  console.log(count++);
   const { data, setIsExpanded, isExpanded, index } = props;
   console.log(data);
   return (
